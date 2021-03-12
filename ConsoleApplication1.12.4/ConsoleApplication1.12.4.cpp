@@ -8,17 +8,17 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	string s, str=" ";
-	int count=0, i;
+	string s, str = " ";
+	int count = 0, i;
 	cout << "\nВведите строку ";
 	getline(cin, s);
-	for (i = 0; i < s.length(); i++) {
-		if (s[i] == str[0]) {
+	for (i = 0; i < s.length()-1; i++) {
+		if (s[i] != str[0] && s[i+1] == str[0]&&(i<s.length()-2)) {
 			count++;
 		}
-   }
-	cout << "\nВ Вашей строке " << count+1 << " слов.";
-}
+	}
+		cout << "\nВ Вашей строке " << count + 1 << " слов.";
+	}
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
