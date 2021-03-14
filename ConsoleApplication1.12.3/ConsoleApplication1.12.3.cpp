@@ -8,25 +8,30 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 		string number;
-	int i,count=0, counter=0;
+		int i, countNumber=0, countPoint=0 ;
 	cout << "\nВведите вещественное число ";
 	cin >> number;
 	if ((number[0] == '-') || (number[0] == '.') || (number[0] >= '0' && number[0] <= '9')) {
 		for (i = 0; i < number.length(); i++) {
 			if (number[i] == '.') {
-				counter++;
+				countPoint++;
 			}
-			if (number[i] >= '0' && number[i] <= '9') {
-				count++;
+			 if (number[i] >= '0' && number[i] <= '9') {
+				countNumber++;
 			}
-			if ((counter > 1) || ((i == number.length() - 1) && (count == 0)) || (i > 0 && number[i] != '.' &&
-				(number[i] < '0' || number[i]>'9'))) {
-				cout << "\nЭта строка некорректно задаёт вещественное число.\n"; break;
+			if (((countPoint<= 1)&&(i == number.length() - 1))&&((i == number.length() - 1) &&
+				(countNumber > 0))&&((i > 0) &&( number[i] != '.') &&
+				(number[i] < '0')&&( number[i]>'9')))
+			{
+				cout << "\nЭта строка задаёт вещественное число корректно.";
+			}
+			else if(i == number.length() - 1) {
+				cout << "\nЭта строка некорректно задаёт вещественное число.\n";
 			}
 		}
-		cout << "\nЭта строка задаёт вещественное число корректно.\n";
+		
 	}
-	else {
+        else {
 		cout << "\nЭта строка некорректно задаёт вещественное число.\n";
 	}
 }
