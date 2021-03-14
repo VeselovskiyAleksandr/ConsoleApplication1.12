@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	string numberOne, numberTow;
+	string numberOne, numberTwo;
 	int bools=0, cows=0, i, j;
 	cout << "\nВведите задуманное четырёхзначное число ";
 	cin >> numberOne;
@@ -18,19 +18,19 @@ int main()
 	}
 	while(bools<4){
 		cout << "\nВведите второе четырёхзначное число ";
-	    cin>> numberTow;
+	    cin>> numberTwo;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
-			if (i == j && numberOne[i] == numberTow[j]) {
+			if (i == j && numberOne[i] == numberTwo[j]) {
 				bools++;
 			}
-			if (i != j && numberOne[i] == numberTow[j]) {
+			if (i != j && numberOne[i] == numberTwo[j]&& numberOne[i]!=numberOne[i+1]) {
 				cows++;
 			}
-			if ((bools + cows) > 4) {
+			else if ((bools + cows) > 4) {
 				cout << "\nВы ошиблись."; break;
 			}
-			if (j > 3) {
+			else if (j > 3) {
 				cout << "\nВторое число должно быть четырёхзначным."; break;
 			}
 		}
@@ -39,7 +39,7 @@ int main()
 		cout << "\n             ПОЗДРАВЛЯЕМ!";
 		cout << "\n           Вы угадали число."; break;
 	}
-	cout << "\nВ Вашем числе " << bools << " Быков и " << cows << " коров";
+	cout << "\nВ Вашем числе " << bools << " Быка и " << cows << " коровы.";
 	bools = 0; cows = 0;
 	}
 }
