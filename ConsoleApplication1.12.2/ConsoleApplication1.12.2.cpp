@@ -22,10 +22,10 @@ int main()
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
 			if (i == j && numberOne[i] == numberTwo[j]) {
-				bools++;
+				bools++; break;
 			}
 			if (i != j && numberOne[i] == numberTwo[j]&& numberOne[i]!=numberOne[i+1]) {
-				cows++;
+				cows++; break;
 			}
 			else if ((bools + cows) > 4) {
 				cout << "\nВы ошиблись."; break;
