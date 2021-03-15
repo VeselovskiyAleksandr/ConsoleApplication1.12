@@ -21,12 +21,13 @@ int main()
 	    cin>> numberTwo;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
+			int countCows=0;
 			if (i == j && numberOne[i] == numberTwo[j]) {
-				bools++; break;
+				bools++;
 			}
-			if (i != j && numberOne[i] == numberTwo[j]&& numberOne[i]!=numberOne[i+1]) {
-				cows++; break;
-				cout << "\n" << i << " " << j;
+			if (i != j && numberOne[i] == numberTwo[j]&& countCows<1) {
+				cows++; countCows++;
+				cout << numberOne[i] << " " << numberTwo[j];
 			}
 			else if ((bools + cows) > 4) {
 				cout << "\nВы ошиблись."; break;
