@@ -26,6 +26,7 @@ int main()
 			}
 			if (i != j && numberOne[i] == numberTwo[j]&& numberOne[i]!=numberOne[i+1]) {
 				cows++; break;
+				cout << "\n" << i << " " << j;
 			}
 			else if ((bools + cows) > 4) {
 				cout << "\nВы ошиблись."; break;
