@@ -8,43 +8,68 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string numberOne, numberTwo;
-	int bools=0, cows=0, i, j;
+	int bools=0, cows=0, i, j, k=0;
+	bool correct;
 	cout << "\nВведите задуманное четырёхзначное число ";
 	cin >> numberOne;
-	for (i = 0; i < numberOne.length(); i++) {
-		if (numberOne[i] < '0' && numberOne[i]>'9' && i > 3) {
+	
+	for (i = 0; i < 4; i++) {
+		if ((numberOne[i]< '0')|| (numberOne[i]> '9')|| (numberOne.length() != 4)) {
+			correct = false;
 			cout << "\nЗадумайте правильно число. "; break;
 		}
+		else {
+			correct = true;
+		}
 	}
-	while(bools<4){
+	
+	while ((bools< 4)&&correct) {
 		cout << "\nВведите второе четырёхзначное число ";
-	    cin>> numberTwo;
-	for (i = 0; i < 4; i++) {
+		cin >> numberTwo;
 		for (j = 0; j < 4; j++) {
-			int countCows=0;
-			if (i == j && numberOne[i] == numberTwo[j]) {
-				bools++;
+			if ((numberTwo[j] < '0') || (numberTwo[j] > '9') || (numberTwo.length() != 4)) {
+				correct = false;
+				cout << "\nУкажите правильно правильно число. "; break;
 			}
-			if (i != j && numberOne[i] == numberTwo[j]&& countCows<1) {
-				cows++; countCows++;
-				cout << numberOne[i] << " " << numberTwo[j];
-			}
-			else if ((bools + cows) > 4) {
-				cout << "\nВы ошиблись."; break;
-			}
-			else if (j > 3) {
-				cout << "\nВторое число должно быть четырёхзначным."; break;
+			else {
+				correct = true;
 			}
 		}
+		if (correct) {
+			 int countCowsOne=0, countCowsTwo = 0;
+			for (i = 0; i < 4; i++) {
+				
+				for (k = i+1; k<numberOne.length(); k++) {
+					if (numberOne[i] == numberOne[k]) {
+						countCowsOne++; cout << countCowsOne << "\n";
+					}
+				}
+				    for (j = 0; j < 4; j++) {
+					    if (i == j && numberOne[i] == numberTwo[j]) {
+						bools++;
+
+					}
+					
+					    if ((i != j) && (numberTwo[j] == numberOne[i]) && (countCowsTwo < 1)) {
+						cows++;	countCowsTwo++;
+						
+					}
+				}
+			
+				if (bools == 4) {
+					cout << "\n             ПОЗДРАВЛЯЕМ!";
+					cout << "\n           Вы угадали число."; break;
+
+				}
+			}
+	if (bools < 4) {
+cout << "\nВ Вашем числе " << bools << " Бык и " << cows- countCowsOne << " коров.";
+				}
+			
 		}
-	if (bools == 4) {
-		cout << "\n             ПОЗДРАВЛЯЕМ!";
-		cout << "\n           Вы угадали число."; break;
 	}
-	cout << "\nВ Вашем числе " << bools << " Быка и " << cows << " коровы.";
-	bools = 0; cows = 0;
 	}
-}
+
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
