@@ -61,12 +61,10 @@ int main()
 								countCowsTwo++;
 							}
 						}
-						if (((countCowsOne>1)|| (countCowsTwo>1))&&(countCowsOne!= countCowsTwo)){
-							
-						}
-						else {
+						if(countCowsOne== countCowsTwo){
 							cows++;
 						}
+					
 						countCowsOne=0;  countCowsTwo = 0;
 					}
 				}
