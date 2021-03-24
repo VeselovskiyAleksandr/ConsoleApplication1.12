@@ -8,27 +8,48 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string departureTime, arrivalTime;
-	int hourOne, hourTow, minuteOne, minuteTow, trevalTime;
+	int hourOne, hourTwo, minuteOne, minuteTwo, trevalTime, i;
+	bool timeOne, timeTwo;
 	cout << "\nВведите время отправления поезда в формате HH:MM ";
 	cin >> departureTime;
 	hourOne = 10 *( departureTime[0]-'0') + departureTime[1]-'0';
 	minuteOne = 10 *( departureTime[3]-'0') + departureTime[4]-'0';
+
+			for (i = 0; i < 5; i++) {
+				if((i==2&& departureTime[2] == ':')|| (i != 2 &&( departureTime[i] >='0' &&
+					departureTime[i] <'9'))) {
+					timeOne = true;
+				}
+				else {
+					timeOne = false;
+				}
+			}
+	
 	cout << "\nВведите время прибытия поезда в формате HH:MM ";
 	cin>> arrivalTime;
-	hourTow = 10 *( arrivalTime[0]-'0') + arrivalTime[1]-'0';
-	minuteTow = 10 *( arrivalTime[3]-'0') + arrivalTime[4]-'0';
-	if (departureTime[2] == ':' && arrivalTime[2] == ':' && departureTime[1] >= '0' && departureTime[1] <= '9'
-		 && arrivalTime[1] >= '0' && arrivalTime[1] <= '9' && hourOne < 24 && hourTow < 24 && minuteOne < 60
-		 && minuteTow < 60&& departureTime.length()==5&& arrivalTime.length()==5) {
-		if (hourTow > hourOne) {
-			trevalTime = 60 * hourTow + minuteTow - 60 * hourOne - minuteOne;
+     hourTwo = 10 *( arrivalTime[0]-'0') + arrivalTime[1]-'0';
+	minuteTwo = 10 *( arrivalTime[3]-'0') + arrivalTime[4]-'0';
+	
+		for (i = 0; i < 5; i++) {
+			if ((i == 2 && arrivalTime[2] == ':') ||
+				(i != 2 && (arrivalTime[i] >= '0' && arrivalTime[i] < '9'))) {
+                	timeTwo = true;
+			}
+			else {
+				timeTwo = false;
+			}
 		}
-		else {
-			trevalTime = 60 * hourTow + minuteTow + (24 * 60 - 60 * hourOne - minuteOne);
+	if ((timeOne&&timeTwo)&&(hourTwo < 24) &&( minuteOne < 60)&&(arrivalTime.length() == 5)&&(hourOne < 24)&&
+		(minuteOne < 60) &&( departureTime.length() == 5)) {
+		if (hourTwo > hourOne) {
+			trevalTime = 60 * hourTwo + minuteTwo - 60 * hourOne - minuteOne;
+		}
+		else{
+			trevalTime = 60 * hourTwo + minuteTwo + (24 * 60 - 60 * hourOne - minuteOne);
 		}
 		cout << "\nВремя в пути составило " << trevalTime / 60 << " часов " << trevalTime % 60 << " минут";
 		}
-		else{
+		else  {
 			cout << "\nУкажите правильно время.";
 		}
 	}
