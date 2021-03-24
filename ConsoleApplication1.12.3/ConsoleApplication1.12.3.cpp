@@ -8,20 +8,24 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 		string number;
-		int i, countNumber=0, countPoint=0 ;
+		int i, j, countNumber=0, countPoint=0 ;
 	cout << "\nВведите вещественное число ";
 	cin >> number;
 	if ((number[0] == '-') || (number[0] == '.') || (number[0] >= '0' && number[0] <= '9')) {
 		for (i = 0; i < number.length(); i++) {
+			if (number[0] == '-') {
+				j = 1;
+			}
+			else {
+				j = 0;
+			}
 			if (number[i] == '.') {
 				countPoint++;
 			}
-			 if (number[i] >= '0' && number[i] <= '9') {
+			else if (number[i] >= '0' && number[i] <= '9') {
 				countNumber++;
 			}
-			if (((countPoint<= 1)&&(i == number.length() - 1))&&((i == number.length() - 1) &&
-				(countNumber > 0))&&((i > 0) &&( number[i] != '.') &&
-				(number[i] < '0')&&( number[i]>'9')))
+			if ((i == number.length() - 1)&&(countPoint<= 1)&&(countNumber== number.length()- countPoint-j))
 			{
 				cout << "\nЭта строка задаёт вещественное число корректно.";
 			}
@@ -29,7 +33,7 @@ int main()
 				cout << "\nЭта строка некорректно задаёт вещественное число.\n";
 			}
 		}
-		
+		с
 	}
         else {
 		cout << "\nЭта строка некорректно задаёт вещественное число.\n";
