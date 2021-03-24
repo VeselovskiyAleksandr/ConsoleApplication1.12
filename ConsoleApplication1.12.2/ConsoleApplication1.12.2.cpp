@@ -14,7 +14,7 @@ int main()
 	cin >> numberOne;
 
 	for (i = 0; i < 4; i++) {
-		if ((numberOne[i] < '0') || (numberOne[i] > '9') || (numberOne.length() != 4)) {
+		if ((numberOne.length() != 4)||( numberOne[i] < '0') || (numberOne[i] > '9')) {
 			correct = false;
 			cout << "\nЗадумайте правильно число. "; break;
 		}
@@ -29,7 +29,7 @@ int main()
 		cin >> numberTwo;
 		for (j = 0; j < 4; j++) {
 
-			if ((numberTwo[j] < '0') || (numberTwo[j] > '9') || (numberTwo.length() != 4)) {
+			if ((numberTwo.length() != 4)||(numberTwo[j] < '0')||(numberTwo[j] > '9')) {
 				correct = false;
 				cout << "\nУкажите правильно  число. "; break;
 			}
