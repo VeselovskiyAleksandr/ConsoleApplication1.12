@@ -16,12 +16,12 @@ int main()
 			if (number[i] == '.') {
 				countPoint++;
 			}
-			 if (number[i] >= '0' && number[i] <= '9') {
+			else if (number[i] >= '0' && number[i] <= '9') {
 				countNumber++;
 			}
 			if (((countPoint<= 1)&&(i == number.length() - 1))&&((i == number.length() - 1) &&
-				(countNumber > 0))&&((i > 0) &&( number[i] != '.') &&
-				(number[i] < '0')&&( number[i]>'9')))
+				(countNumber > 0))&&(((i > 0) &&( number[i] != '.')) &&
+				((number[i]>='0')&&( number[i]<='9'))))
 			{
 				cout << "\nЭта строка задаёт вещественное число корректно.";
 			}
