@@ -12,34 +12,43 @@ int main()
 	bool correct;
 	cout << "\nВведите задуманное четырёхзначное число ";
 	cin >> numberOne;
-
-	for (i = 0; i < 4; i++) {
-		if ((numberOne.length() != 4)||( numberOne[i] < '0') || (numberOne[i] > '9')) {
-			correct = false;
-			cout << "\nЗадумайте правильно число. "; break;
-		}
-		else {
-			correct = true;
-
-		}
+	if (numberOne.length() != 4){
+		correct = false;
+		cout << "\nУкажите правильно  число. ";
 	}
-
-	while ((bools < 4) && correct) {
-		cout << "\nВведите второе четырёхзначное число ";
-		cin >> numberTwo;
-		for (j = 0; j < 4; j++) {
-
-			if ((numberTwo.length() != 4)||(numberTwo[j] < '0')||(numberTwo[j] > '9')) {
+	else {
+		for (i = 0; i < 4; i++) {
+			if ((numberOne[i] < '0') || (numberOne[i] > '9')) {
 				correct = false;
-				cout << "\nУкажите правильно  число. "; break;
+				cout << "\nЗадумайте правильно число. "; break;
 			}
 			else {
 				correct = true;
 
 			}
 		}
+	}
+	while ((bools < 4) &&(correct==true)) {
+		cout << "\nВведите второе четырёхзначное число ";
+		cin >> numberTwo;
+		if (numberTwo.length() != 4) {
+			correct = false;
+			cout << "\nУкажите правильно  число. ";
+		}
+		else {
+			for (j = 0; j < 4; j++) {
+				if ((numberTwo[j] < '0') || (numberTwo[j] > '9')) {
+					correct = false;
+					cout << "\nУкажите правильно  число. "; break;
+				}
+				else {
+					correct = true;
+
+				}
+			}
+		}
 		str = numberOne; s = numberTwo;
-		if (correct) {
+		if (correct==true) {
 			int countCowsOne = 0, countCowsTwo = 0;
 			cows = 0; bools = 0;
 			for (i = 0; i < 4; i++) {
